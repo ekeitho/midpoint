@@ -5,4 +5,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="consumer_key">5w6j5PD0hO_A5yXfrH1MkQ</string>
+    <string name="consumer_secret">aegBxvODR9gvJSxVrQScLB3X2Wg</string>
+    <string name="token">cl7Bt_h7gA9AcGRxwe875oL409pbhEnR</string>
+    <string name="token_secret">ahb0l5MTItCuaYmxz3Kx2dVPbzE</string>
+    <string name="sender_id">664452512632</string>
 </resources>
