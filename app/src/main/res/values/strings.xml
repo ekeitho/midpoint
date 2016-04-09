@@ -11,4 +11,6 @@
     <string name="token">cl7Bt_h7gA9AcGRxwe875oL409pbhEnR</string>
     <string name="token_secret">ahb0l5MTItCuaYmxz3Kx2dVPbzE</string>
     <string name="sender_id">664452512632</string>
+
+    <string name="facebook_app_id">538363586323385</string>
 </resources>
