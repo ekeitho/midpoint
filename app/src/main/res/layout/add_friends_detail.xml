@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="112dp"
+    android:layout_height="112dp"
+    android:layout_margin="4dp"
+    android:elevation="2dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:src="@drawable/me"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+
+</android.support.v7.widget.CardView>

@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -31,17 +32,9 @@ import retrofit.Call;
 import retrofit.Response;
 
 public class MidpointActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private static final String TAG = "MidpointActivity";
-
-    class MidpointTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected Void doInBackground(Void... params) {
-            setUpYelpApi();
-            return null;
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +48,7 @@ public class MidpointActivity extends AppCompatActivity
         startService(intent);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -71,40 +58,30 @@ public class MidpointActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    public void setUpYelpApi() {
-        YelpAPIFactory apiFactory = new YelpAPIFactory(
-                getYelpString(R.string.consumer_key),
-                getYelpString(R.string.consumer_secret),
-                getYelpString(R.string.token),
-                getYelpString(R.string.token_secret));
-        YelpAPI yelpAPI = apiFactory.createAPI();
-
-        Map<String, String> params = new HashMap<>();
-
-        // general params
-        params.put("term", "food");
-        params.put("limit", "4");
-
-        Call<SearchResponse> call = yelpAPI.search("San Francisco", params);
-        try {
-            SearchResponse searchResponse = call.execute().body();
-            ArrayList<Business> businesses = searchResponse.businesses();
-            for (int i = 0; i < businesses.size(); i++) {
-                Log.d(TAG, "setUpYelpApi() called: " + businesses.get(i).name());
-            }
-            int totalNumberOfResult = searchResponse.total();
-        } catch (IOException e) {
-
+        navigationView.getMenu().getItem(0).setChecked(true);
+        if (savedInstanceState == null) {
+            addFragment();
         }
     }
 
-    public String getYelpString(int stringId) {
-        return getResources().getString(stringId);
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab:
+                Intent intent = new Intent(this, AddFriendsActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
-    @Override
+    public void addFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        FriendsHistoryFragment fragment = new FriendsHistoryFragment();
+        transaction.add(R.id.fragment_container, fragment, "fragment-history");
+        transaction.commit();
+    }
+
+
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -142,15 +119,13 @@ public class MidpointActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.friend_history) {
+
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 

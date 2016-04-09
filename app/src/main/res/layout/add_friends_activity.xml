@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            app:navigationIcon="@mipmap/back"
+            app:title="Add Friends"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_view"
+            android:theme="@style/CustomizeSearch"
+            android:background="@drawable/rounded_corners"
+            app:searchIcon="@drawable/search"
+            android:elevation="4dp"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.SearchView>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="Groups"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/group_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="224dp">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_marginTop="4dp"
+            android:text="Recent Midpoints"
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:src="@drawable/kelby"
+                android:layout_width="48dp"
+                app:civ_border_color="#fff"
+                app:civ_border_width="1dp"
+                android:layout_height="48dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginStart="24dp"
+                app:civ_border_color="#fff"
+                app:civ_border_width="1dp"
+                android:src="@drawable/me"
+                android:layout_width="48dp"
+                android:layout_height="48dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginStart="48dp"
+                app:civ_border_color="#fff"
+                app:civ_border_width="1dp"
+                android:src="@drawable/sam"
+                android:layout_width="48dp"
+                android:layout_height="48dp" />
+
+
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

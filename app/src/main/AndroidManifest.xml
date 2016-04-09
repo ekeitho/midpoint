@@ -27,6 +27,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AddFriendsActivity">
+
+        </activity>
+
         <service
             android:name=".gcm.MyInstanceIDListenerService"
             android:exported="false">
