@@ -6,7 +6,7 @@
     android:elevation="2dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:src="@drawable/me"
+        android:src="@drawable/kelby"
         android:layout_gravity="center"
         android:layout_width="80dp"
         android:layout_height="80dp" />
